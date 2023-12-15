@@ -1,4 +1,20 @@
-<p align="center">Cash Machine</p>
+<p align="center">Cash Machine from Nick</p>
+
+---
+Initially you need to do following:
+1. Copy .env.example to .env and set your database details and GitHub credentials
+2. Execute following commands
+```shell
+composer install
+php artisan migrate
+npm run build
+```
+3. That is!
+
+## Happy Playing
+
+---
+
 
 ## About Cache Machine
 
