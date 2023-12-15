@@ -30,5 +30,13 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-
+    'github' => [
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => env('GITHUB_REDIRECT_URI'),
+    ],
+    'cash_machine' => [
+        'max_amount_limit' => env('CASH_MACHINE_MAX_AMOUNT_LIMIT', 20000),
+        'max_cash_accept_limit' => env('CASH_MACHINE_MAX_CASH_ACCEPT_LIMIT', 10000)
+    ]
 ];
