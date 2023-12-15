@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Akaunting\Money\Casts\MoneyCast;
 use Akaunting\Money\Currency;
 use Akaunting\Money\Money;
 use App\Enums\TransactionType;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Transaction extends Model
 {
@@ -23,7 +23,7 @@ class Transaction extends Model
      *
      * @var array
      */
-    protected $fillable = ['amount', 'inputs', 'type'];
+    protected $fillable = ['amount', 'inputs', 'type', 'user_id'];
 
     /**
      * The attributes that should be cast.
@@ -41,5 +41,10 @@ class Transaction extends Model
             get: fn (int $value) => new Money($value, new Currency(config('money.defaults.currency'))),
             set: fn (Money $value) => $value->getAmount()
         );
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

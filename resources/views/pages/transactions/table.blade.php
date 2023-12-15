@@ -11,6 +11,7 @@
                             <th>{{ __('ID') }}</th>
                             <th>{{ __('Total') }}</th>
                             <th>{{ __('Inputs') }}</th>
+                            <th>{{ __('User') }}</th>
                             <th>{{ __('Created At') }}</th>
                         </tr>
                     </thead>
@@ -20,6 +21,7 @@
                             <td>{{ $transaction->id }}</td>
                             <td> @money($transaction->amount) </td>
                             <td><pre><code>{{ json_encode($transaction->inputs, JSON_PRETTY_PRINT) }}</code></pre></td>
+                            <td>{{ $transaction->user->name }}</td>
                             <td>{{ @date($transaction->created_at) }}</td>
                         </tr>
                     @endforeach

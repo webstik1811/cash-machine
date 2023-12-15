@@ -19,7 +19,8 @@ class CashMachine
         return Transaction::create([
             'amount' => $transaction->amount(),
             'inputs' => $inputs,
-            'type' => $transaction->getContext()
+            'type' => $transaction->getContext(),
+            'user_id' => auth()->user()->id
         ]);
     }
 }
