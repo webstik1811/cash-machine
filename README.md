@@ -15,7 +15,6 @@ npm run build
 
 ---
 
-
 ## About Cache Machine
 
 - Cash Machine handles incomes of money.
@@ -42,12 +41,13 @@ npm run build
 ## Implementation
 
 - Must be implemented 3 separate forms with inputs for each Source of Money
+![img_1.png](img_1.png)
 - All inputs are required
 - On form submit the transactions must be stored in Database (total amount and inputs as JSON)
 - All validations must be written using Laravel Validator, maybe some custom rules need to be written
 - Cash Machine must check on transaction submit if amount limit isn't exceeded by calculating total amount stored in Database
 - On successful submission User must be redirected on a New Page with transaction details stored in Database (ID, Total, Inputs)
-
+  ![img.png](img.png)
 ## Requirements
 
 - Each source must be implemented as a separate class which will implement a

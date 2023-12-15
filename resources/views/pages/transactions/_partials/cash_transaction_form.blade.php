@@ -4,7 +4,7 @@
         <form method="POST" action="{{ route('create.cash.transaction') }}">
             @csrf
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('1 BGN') }}</label>
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('1 BGN') }}*</label>
                 <div class="col-md-6">
                     <input id="cash[1]"
                            type="number"
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('5 BGN') }}</label>
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('5 BGN') }}*</label>
                 <div class="col-md-6">
                     <input id="cash[5]"
                            type="number"
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('10 BGN') }}</label>
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('10 BGN') }}*</label>
                 <div class="col-md-6">
                     <input id="cash[10]"
                            type="number"
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('50 BGN') }}</label>
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('50 BGN') }}*</label>
                 <div class="col-md-6">
                     <input id="cash[50]"
                            type="number"
@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('100 BGN') }}</label>
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('100 BGN') }}*</label>
                 <div class="col-md-6">
                     <input id="cash[100]"
                            type="number"

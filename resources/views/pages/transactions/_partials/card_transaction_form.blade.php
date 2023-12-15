@@ -4,7 +4,7 @@
         <form method="POST" action="{{ route('create.card.transaction') }}">
             @csrf
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Card number') }}</label>
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Card number') }}*</label>
                 <div class="col-md-6">
                     <input id="card_number"
                            type="text"
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Expiration Date') }}</label>
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Expiration Date') }}*</label>
                 <div class="col-md-6">
                     <input id="expiration_date"
                            type="text"
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Cardholder') }}</label>
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Cardholder') }}*</label>
                 <div class="col-md-6">
                     <input id="cardholder"
                            type="text"
@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('CVV') }}</label>
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('CVV') }}*</label>
                 <div class="col-md-6">
                     <input id="cvv"
                            type="text"
@@ -73,7 +73,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Amount') }}</label>
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Amount') }}*</label>
                 <div class="col-md-6">
                     <input id="amount"
                            type="text"

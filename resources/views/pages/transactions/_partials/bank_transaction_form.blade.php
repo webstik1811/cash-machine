@@ -4,7 +4,7 @@
         <form method="POST" action="{{ route('create.bank.transaction') }}">
         @csrf
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Transfer Date') }}</label>
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Transfer Date') }}*</label>
                 @php
                     $today = now()->format('Y-m-d');
                 @endphp
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Customer name') }}</label>
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Customer name') }}*</label>
                 <div class="col-md-6">
                     <input id="customer_name"
                            type="text"
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Account number') }}</label>
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Account number') }}*</label>
                 <div class="col-md-6">
                     <input id="account_number"
                            type="text"
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Amount') }}</label>
+                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Amount') }}*</label>
                 <div class="col-md-6">
                     <input id="bank_amount"
                            type="text"
