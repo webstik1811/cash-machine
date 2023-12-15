@@ -39,5 +39,3 @@ Route::group(['middleware' => 'auth', 'prefix' => 'transaction'], function () {
     Route::get('/', TransactionFormController::class)->name('view.transaction.forms');
     Route::get('/list', TransactionListController::class)->name('view.transaction.list');
 });
-
-

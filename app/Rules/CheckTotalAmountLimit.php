@@ -7,7 +7,6 @@ use Akaunting\Money\Money;
 use App\Models\Transaction;
 use Illuminate\Contracts\Validation\Rule;
 
-
 class CheckTotalAmountLimit implements Rule
 {
     protected Money $maxAmount;
@@ -21,7 +20,7 @@ class CheckTotalAmountLimit implements Rule
 
     public function passes($attribute, $value): bool
     {
-        if($this->money) {
+        if ($this->money) {
             $value = $this->money;
         }
 

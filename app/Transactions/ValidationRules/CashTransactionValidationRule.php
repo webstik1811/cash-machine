@@ -24,7 +24,8 @@ class CashTransactionValidationRule extends BaseTransactionValidationRule
 
     public function calculateTotalCashAndLimit($cashValues = [])
     {
-        return min(collect($cashValues)
+        return min(
+            collect($cashValues)
             ->reduce(fn ($carry, $quantity, $denomination) =>
                 $carry + ($denomination * $quantity), 0),
             config('services.cash_machine.max_cash_accept_limit')

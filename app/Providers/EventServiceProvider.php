@@ -21,7 +21,7 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         SocialiteWasCalled::class => [
-            GitHubExtendSocialite::class.'@handle',
+            GitHubExtendSocialite::class . '@handle',
         ],
     ];
 

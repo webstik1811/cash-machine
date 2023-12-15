@@ -21,6 +21,5 @@ class CashMachine
             'inputs' => $inputs,
             'type' => $transaction->getContext()
         ]);
-
     }
 }

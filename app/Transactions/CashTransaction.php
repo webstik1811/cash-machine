@@ -11,7 +11,8 @@ use Illuminate\Http\Request;
 
 class CashTransaction extends BaseTransaction
 {
-    public function __construct(Request $request) {
+    public function __construct(Request $request)
+    {
         $this->request = $request;
         $this->setContext(TransactionType::Cash);
         $this->transactionValidationRule = new CashTransactionValidationRule($request);

@@ -11,7 +11,8 @@ use Illuminate\Http\Request;
 
 class BankTransaction extends BaseTransaction
 {
-    public function __construct(Request $request) {
+    public function __construct(Request $request)
+    {
         $this->request = $request;
         $this->setContext(TransactionType::BankTransfer);
         $this->transactionValidationRule = new BankTransactionValidationRule($request);

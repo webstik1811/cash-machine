@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Auth\Github;
 
 use App\Http\Controllers\Controller;

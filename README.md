@@ -1,66 +1,81 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center">Cash Machine</p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## About Cache Machine
 
-## About Laravel
+- Cash Machine handles incomes of money.
+- It can work with different sources of money: Cash, Credit Card, Bank Transfer
+- It has a limit of 20.000 amount for total processing, everything more is declined.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Cash Source:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- It can accept only banknotes of 1, 5, 10, 50, 100 for Cash source
+- It has 5 inputs for quantity of each type of banknotes
+- It has a limit of 10.000 of amount in Cash, everything more is declined
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Credit Card Source:
 
-## Learning Laravel
+- It takes as inputs: Card Number, Expiration Date (MM/YYYY), Cardholder, CVV (3 digits), Amount
+- It can accept Card Number with 16 digits and only ones which starts with digit '4' (like 4123 4567 8912 3456)
+- Expiration Date must be at least 2 months bigger than current month
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Bank Transfer
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- It takes as inputs: Transfer Date, Customer name, Account number (6 alphanumerics), Amount
+- Transfer Date can't be older than current date
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Implementation
 
-## Laravel Sponsors
+- Must be implemented 3 separate forms with inputs for each Source of Money
+- All inputs are required
+- On form submit the transactions must be stored in Database (total amount and inputs as JSON)
+- All validations must be written using Laravel Validator, maybe some custom rules need to be written
+- Cash Machine must check on transaction submit if amount limit isn't exceeded by calculating total amount stored in Database
+- On successful submission User must be redirected on a New Page with transaction details stored in Database (ID, Total, Inputs)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Requirements
 
-### Premium Partners
+- Each source must be implemented as a separate class which will implement a
+common interface:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```injectablephp
+interface Transaction
+{
+    /**
+    * Validate Inputs
+    */
+    public function validate();
+    /**
+    * Return total amount
+    
+    */
+    public function amount();
+    /**
+    * Return Inputs
+    */
+    public function inputs();
+}
+class CashTransaction implements Transaction {}
+class CardTransaction implements Transaction {}
+class BankTransaction implements Transaction {}
+```
 
-## Contributing
+- Cash Machine must be a class which will handle Transaction and will validate and
+  store it in Database
+```injectablephp
+class CashMachine
+{
+    /**
+    * Store transaction in Database
+    */
+    public function store(Transaction $transaction)
+    {
+    //
+    }
+}
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Must be implemented a factory for Transaction initialization
+ ```injectablephp
+$transaction = TransactionFactory::make(CashTransaction::class, $request);
+```
+- Code Style PSR-12, Best Practices

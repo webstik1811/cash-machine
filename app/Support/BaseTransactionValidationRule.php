@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 abstract class BaseTransactionValidationRule implements TransactionValidationRuleContract
 {
-    public function __construct(protected Request $request){
-
+    public function __construct(protected Request $request)
+    {
     }
 }

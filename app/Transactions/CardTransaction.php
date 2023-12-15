@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 class CardTransaction extends BaseTransaction
 {
-    public function __construct(Request $request) {
+    public function __construct(Request $request)
+    {
         $this->request = $request;
         $this->setContext(TransactionType::CreditCard);
         $this->transactionValidationRule = new CardTransactionValidationRule($request);
